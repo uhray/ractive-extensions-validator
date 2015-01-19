@@ -6,7 +6,7 @@ var gulp = require('gulp'),
 gulp.task('default', ['info']);
 gulp.task('lint', ['dolint']);
 gulp.task('example', ['serve']);
-gulp.task('build', ['dobuild']);
+gulp.task('build', ['build-min', 'build-max']);
 
 // Helper Tasks ----------------------------------------------------------------
 
@@ -25,11 +25,13 @@ gulp.task('serve', function() {
                      { stdio: 'inherit' });
 });
 
-gulp.task('dobuild', function() {
+gulp.task('build-min', function() {
   var min = ['-o', 'build/config.js',
-             'out=dist/validator.min.js', 'optimize=uglify'],
-      max = ['-o', 'build/config.js', 'out=dist/validator.js', 'optimize=none'];
+             'out=dist/validator.min.js', 'optimize=uglify'];
+  return child.spawn('./node_modules/.bin/r.js', min, { stdio: 'inherit' });
+});
 
-  child.spawn('./node_modules/.bin/r.js', min, { stdio: 'inherit' });
+gulp.task('build-max', function() {
+  var max = ['-o', 'build/config.js', 'out=dist/validator.js', 'optimize=none'];
   return child.spawn('./node_modules/.bin/r.js', max, { stdio: 'inherit' });
 });
