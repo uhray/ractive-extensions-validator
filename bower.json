@@ -1,0 +1,23 @@
+{
+  "name": "ractive-extensions-validator",
+  "version": "0.0.0",
+  "authors": [
+    "Robert Thompson <rthomps7@nd.edu>"
+  ],
+  "main": "dist/validator.js",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "ractive": "~0.6.1",
+    "requirejs": "~2.1.15",
+    "rv": "git://github.com/ractivejs/rv.git#v0.1.8",
+    "require-css": "~0.1.8",
+    "almond": "~0.3.0"
+  }
+}

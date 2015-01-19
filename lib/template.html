@@ -1,0 +1,39 @@
+<div class="ractive-validator-container">
+  <style>
+    .{{name}}.ractive-validator {
+      width:{{width}}px;
+      top:{{top}}px;
+      left:{{left}}px;
+    }
+
+    .{{name}}.ractive-validator .rv-message {
+      min-height: {{height}}px;
+    }
+
+    .{{name}}.ractive-validator .rv-message:after,
+    .{{name}}.ractive-validator .rv-message:before {
+      top: {{height/2}}px;
+    }
+
+    .{{name}}.ractive-validator .rv-alert {
+      top: {{height / 2}}px;
+      margin-top: -{{alert.width/2}}px;
+      height: {{alert.width}}px;
+      line-height: {{alert.width}}px;
+      width: {{alert.width}}px;
+    }
+
+  </style>
+
+  <div class="{{name}} ractive-validator"
+       style="width:{{width}};top:{{top}};left:{{left}}">
+    {{#unless valid}}
+      <div class="rv-message" style="display:{{active ? 'block' : 'none'}}">
+        {{message}}
+      </div>
+      <div class="rv-alert"
+           style="display:{{active ? 'none' : 'block'}}"
+           on-click="alert-click"> ! </div>
+    {{/unless}}
+  </div>
+</div>

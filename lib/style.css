@@ -1,0 +1,57 @@
+.ractive-validator {
+  position: absolute;
+  height: 0;
+  font-family: sans-serif;
+}
+
+.ractive-validator .rv-message {
+  position: absolute;
+  top: 0;
+  right: 100%;
+  width: 150px;
+  text-align: left;
+  padding: 5px;
+  margin-right: 20px;
+  border: solid 1px #8B0300;
+  background: #B94A48;
+  color: #FFF;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.ractive-validator .rv-message:after,
+.ractive-validator .rv-message:before {
+  left: 100%;
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+}
+
+.ractive-validator .rv-message:after {
+  border-color: rgba(185, 74, 72, 0);
+  border-left-color: #B94A48;
+  border-width: 8px;
+  margin-top: -8px;
+}
+.ractive-validator .rv-message:before {
+  border-color: rgba(139, 3, 0, 0);
+  border-left-color: #8b0300;
+  border-width: 9px;
+  margin-top: -9px;
+}
+
+.ractive-validator .rv-alert {
+  position: absolute;
+  right: 5px;
+  border-radius: 50%;
+  background: #B94A48;
+  text-align: center;
+  color: #FFF;
+  vertical-align: middle;
+  font-size: 15px;
+  font-family: sans-serif;
+  font-weight: bold;
+}
