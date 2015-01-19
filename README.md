@@ -32,7 +32,7 @@ The goal is to extend Ractive to have some easy, useful tools for form validatio
 </form>
 ```
 
-As you can see, there are two inputs each with validation. The two validators are `string` and `email`. Using Ractive events, you can trigger the validator plugin to run with the `on-submit="validator"`. Validator will listen for the event "validator" on a container and validate all inputs or textareas with the `validator` field set.
+As you can see, there are two inputs each with validation. The two validators are `required` and `email`. Using Ractive events, you can trigger the validator plugin to run with the `on-submit="validator"`. Validator will listen for the event "validator" on a container and validate all inputs or textareas with the `validator` field set.
 
 When validator succeeds, the container will emit and event `validatorSuccess`, so you can tell that to fire any ractive command you want. Here, it emits "success" with `on-validatorSuccess="success"`.
 
@@ -133,9 +133,9 @@ Would call the `Ractive.prototype.validators.string` function with `('test', 5, 
 
 The return value of a validator should be an object with the following:
 
-  * *value*: The value. This is useful if you want to modify the value. Say you're validator phone numbers and you want it formatted like `(555) 555-5555`, you can modify it and it will be updated here.
+  * *value*: The value. This is useful if you want to modify the value. Say you're validating phone numbers and you want it formatted like `(555) 555-5555`. You can modify it, return it here, and it will be updated.
   * *valid*: `Boolean` of whether the value is valid or not.
-  * *message*: String containing the default error message if invalid (see [option](#options) for more info on overriding this).
+  * *message*: `String` containing the default error message if invalid (see [option](#options) for more info on overriding this).
 
 Here is the example for the string validator:
 
@@ -174,7 +174,7 @@ The following are the predefined validators.
 
 Makes sure the string length is between *min* and *max*.
 
-<a href="#validator-required" name="#validator-required">#</a> **required*()
+<a href="#validator-required" name="#validator-required">#</a> **required**()
 
 Makes sure there is some non-empty value.
 
@@ -200,7 +200,7 @@ Example:
 
 ## Styling
 
-The default styling is in [lib/style.css]. The container div is structured like this:
+The default styling is in [lib/style.css](lib/style.css). The container div is structured like this:
 
 ```html
 <div class="ractive-validator">
@@ -229,4 +229,6 @@ Then visit http://127.0.0.1:8080/example/.
 
 The development code is located in [lib](lib). The example code is in [example](example).
 
-After you develop, run `gulp build` to build the files to [dist](dist). Make sure to test out that the built files work.
+After you develop, ling: `gulp lint`.
+
+Then you can build and push: `gulp build` to build the files to [dist](dist). Make sure to test out that the built files work.
