@@ -646,16 +646,6 @@ function(template) {
 
       this._super(options);
 
-      this.on('validator-clear', function() {
-        this.validatorDivs.forEach(function(d) {
-          var el = d.get('element');
-          if (el) delete el._validatorError;
-          d.teardown();
-          el && el.classList && el.classList.remove('validator-error');
-        });
-        this.set('validatorDivs', []);
-      });
-
       this.on('validator', function(event) {
         var node = event.node,
             els = node.querySelectorAll('*[validator]'),
@@ -667,10 +657,37 @@ function(template) {
         }, this);
 
         if (valid) {
-          this.fire('validator-clear');
+          this.fire('validator-clear', node);
           node && node._fireValidatorSuccess(event.original);
         }
       });
+
+      this.on('validator-clear', function(form) {
+        var els = form.querySelectorAll('*[validator]'),
+            divs = this.validatorDivs;
+
+        forEach(els, function(el) {
+          var err = el._validatorError,
+              idx = divs.indexOf(err);
+
+          if (err) err.teardown();
+          delete el._validatorError;
+          if (~idx) divs.slice(idx, 1);
+
+          el && el.classList && el.classList.remove('validator-error');
+        });
+      });
+
+      this.on('teardown', function() {
+        this.validatorDivs.forEach(function(d) {
+          var el = d.get('element');
+          if (el) delete el._validatorError;
+          d.teardown();
+          el && el.classList && el.classList.remove('validator-error');
+        });
+        this.set('validatorDivs', []);
+      });
+
     },
 
     // Create default validators -----------------------------------------------
