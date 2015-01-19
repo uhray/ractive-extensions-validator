@@ -41,7 +41,7 @@ When validator succeeds, the container will emit and event `validatorSuccess`, s
 To get started, you need to include the distributed file in your project. 
 
 ```
-bower install git://github.com/uhray/ractive-extensions-validator.git
+bower install ractive-extensions-validator
 ```
 
 Then you need to make sure that the module is loaded before you use Ractive. It will add the necessary features and event listeners to the Ractive object. If you're using [requirejs](http://requirejs.org/), you could do something like this:
