@@ -10,8 +10,11 @@
     "**/.*",
     "node_modules",
     "bower_components",
-    "test",
-    "tests"
+    "example",
+    "build",
+    "lib",
+    "gulpfile.js",
+    "package.json"
   ],
   "dependencies": {
     "ractive": "~0.6.1",
