@@ -197,6 +197,33 @@ Example:
        validator-message="You must provide an email!" />
 ```
 
+<a href="#options-class" name="#options-class">#</a> validator-**class** = "*class*"
+
+If provided, this will set a custom class for the error message div to *class*. This is so you can custom style a specific error message.
+
+Example:
+
+```html
+<style>
+  .myclassname.ractive-validator .rv-message {
+    /* Some specific styles */
+  }
+</style>
+
+<input type="text" validator="email"
+       validator-class="myclassname" />
+```
+
+<a href="#options-orientation" name="#options-orientation">#</a> validator-**orientation** = "*orientation*"
+
+By default, the error message is with *orientation* as 'left'. The orientation describes what side of the input or textarea the error message is displayed. Options are top, bottom, left, and right.
+
+Example:
+
+```html
+<input type="text" validator="email"
+       validator-orientation="bottom" />
+```
 
 ## Styling
 

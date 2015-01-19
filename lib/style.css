@@ -6,22 +6,17 @@
 
 .ractive-validator .rv-message {
   position: absolute;
-  top: 0;
-  right: 100%;
-  width: 150px;
-  text-align: left;
   padding: 5px;
-  margin-right: 20px;
   border: solid 1px #8B0300;
   background: #B94A48;
   color: #FFF;
   font-size: 12px;
   font-weight: bold;
+  text-align: left;
 }
 
 .ractive-validator .rv-message:after,
 .ractive-validator .rv-message:before {
-  left: 100%;
   border: solid transparent;
   content: " ";
   height: 0;
@@ -32,16 +27,107 @@
 
 .ractive-validator .rv-message:after {
   border-color: rgba(185, 74, 72, 0);
-  border-left-color: #B94A48;
   border-width: 8px;
-  margin-top: -8px;
 }
 .ractive-validator .rv-message:before {
   border-color: rgba(139, 3, 0, 0);
-  border-left-color: #8b0300;
   border-width: 9px;
+}
+
+/* Orient Left */
+
+.ractive-validator.rv-orient-left .rv-message {
+  top: 0;
+  right: 100%;
+  width: 150px;
+  margin-right: 20px;
+}
+
+.ractive-validator.rv-orient-left .rv-message:after,
+.ractive-validator.rv-orient-left .rv-message:before {
+  left: 100%;
+}
+
+.ractive-validator.rv-orient-left .rv-message:after {
+  border-left-color: #B94A48;
+  margin-top: -8px;
+}
+.ractive-validator.rv-orient-left .rv-message:before {
+  border-left-color: #8b0300;
   margin-top: -9px;
 }
+
+/* Orient Bottom */
+
+.ractive-validator.rv-orient-bottom .rv-message {
+  left: 0px;
+  width: 150px;
+  margin-top: 10px;
+}
+
+.ractive-validator.rv-orient-bottom .rv-message:after,
+.ractive-validator.rv-orient-bottom .rv-message:before {
+  bottom: 100%;
+  left: 15px;
+}
+
+.ractive-validator.rv-orient-bottom .rv-message:after {
+  border-bottom-color: #B94A48;
+  margin-left: -8px;
+}
+.ractive-validator.rv-orient-bottom .rv-message:before {
+  border-bottom-color: #8b0300;
+  margin-left: -9px;
+}
+
+/* Orient Top */
+
+.ractive-validator.rv-orient-top .rv-message {
+  top: -10px;
+  left: 0px;
+  transform: translateY(-100%);
+  width: 150px;
+}
+
+.ractive-validator.rv-orient-top .rv-message:after,
+.ractive-validator.rv-orient-top .rv-message:before {
+  top: 100%;
+  left: 15px;
+}
+
+.ractive-validator.rv-orient-top .rv-message:after {
+  border-top-color: #B94A48;
+  margin-left: -8px;
+}
+.ractive-validator.rv-orient-top .rv-message:before {
+  border-top-color: #8b0300;
+  margin-left: -9px;
+}
+
+/* Orient Right */
+
+.ractive-validator.rv-orient-right .rv-message {
+  top: 0;
+  left: 100%;
+  width: 150px;
+  margin-left: 20px;
+}
+
+.ractive-validator.rv-orient-right .rv-message:after,
+.ractive-validator.rv-orient-right .rv-message:before {
+  right: 100%;
+}
+
+.ractive-validator.rv-orient-right .rv-message:after {
+  border-right-color: #B94A48;
+  margin-top: -8px;
+}
+.ractive-validator.rv-orient-right .rv-message:before {
+  border-right-color: #8b0300;
+  margin-top: -9px;
+}
+
+/* Alert */
 
 .ractive-validator .rv-alert {
   position: absolute;

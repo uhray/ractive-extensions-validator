@@ -457,18 +457,37 @@ define("rv!lib/template",[],function(){return { v:1,
               r:"name" },
             ".ractive-validator .rv-message {\n      min-height: ",
             { t:2,
-              r:"height" },
-            "px;\n    }\n\n    .",
-            { t:2,
-              r:"name" },
-            ".ractive-validator .rv-message:after,\n    .",
-            { t:2,
-              r:"name" },
-            ".ractive-validator .rv-message:before {\n      top: ",
-            { t:2,
               x:{ r:[ "height" ],
-                s:"_0/2" } },
-            "px;\n    }\n\n    .",
+                s:"_0-10" } },
+            "px;\n    }\n",
+            { t:4,
+              n:50,
+              x:{ r:[ "options.orientation" ],
+                s:"_0==\"left\"||_0==\"right\"" },
+              f:[ "      .",
+                { t:2,
+                  r:"name" },
+                ".ractive-validator .rv-message:after,\n      .",
+                { t:2,
+                  r:"name" },
+                ".ractive-validator .rv-message:before {\n        top: ",
+                { t:2,
+                  x:{ r:[ "height" ],
+                    s:"_0/2" } },
+                "px;\n      }\n" ] },
+            "    ",
+            { t:4,
+              n:50,
+              x:{ r:[ "options.orientation" ],
+                s:"_0==\"bottom\"" },
+              f:[ "\n      .",
+                { t:2,
+                  r:"name" },
+                ".ractive-validator .rv-message {\n        top: ",
+                { t:2,
+                  r:"height" },
+                "px;\n      }\n" ] },
+            "    .",
             { t:2,
               r:"name" },
             ".ractive-validator .rv-alert {\n      top: ",
@@ -494,6 +513,12 @@ define("rv!lib/template",[],function(){return { v:1,
           e:"div",
           a:{ "class":[ { t:2,
                 r:"name" },
+              " ",
+              { t:2,
+                r:"options.class" },
+              " rv-orient-",
+              { t:2,
+                r:"options.orientation" },
               " ractive-validator" ],
             style:[ "width:",
               { t:2,
@@ -537,7 +562,17 @@ define('css!lib/style',[],function(){});
  */
 define('lib/main',['rv!./template', 'css!./style'],
 function(template) {
-  var extension, MessageDiv;
+  var extension, MessageDiv, defaultOptions;
+
+  // ========================== Default Options ============================= //
+
+  defaultOptions = {
+    orientation: {
+      default: 'left',
+      options: ['top', 'bottom', 'left', 'right']
+    },
+    class: ''
+  };
 
   // ========================== Create MessageDiv =========================== //
 
@@ -545,7 +580,9 @@ function(template) {
     el: document.body,
     append: true,
     template: template,
-    data: {},
+    data: {
+      orientation: 'top'
+    },
     onrender: function() {
       var self = this,
           element = this.get('element'),
@@ -649,25 +686,25 @@ function(template) {
             msg;
 
         if (max == Infinity)
-          msg = 'Value must be at least ' + min + ' characters';
+          msg = 'Value must be at least ' + min + ' characters.';
         else if (min == -Infinity)
-          msg = 'Value cannot be more than ' + max + ' characters';
+          msg = 'Value cannot be more than ' + max + ' characters.';
         else
-          msg = 'Value must be between ' + min + ' and ' + max + 'characters';
+          msg = 'Value must be between ' + min + ' and ' + max + ' characters.';
 
         return { value: String(val), valid: valid, message: msg };
       },
 
       required: function(val) {
         var str = String(val);
-        return { value: val, valid: !!str, message: 'Value is required' };
+        return { value: val, valid: !!str, message: 'Value is required.' };
       },
 
       email: function(val) {
         var str = String(val),
             re = /^([\w\-\.]+)@((\[([0-9]{1,3}\.){3}[0-9]{1,3}\])|(([\w\-]+\.)+)([a-zA-Z]{2,4}))$/;
         return { value: val, valid: re.test(str),
-                 message: 'Not a valid email' };
+                 message: 'Not a valid email.' };
       }
     },
 
@@ -716,7 +753,8 @@ function(template) {
           element: el,
           valid: valid,
           message: msg,
-          parent: this
+          parent: this,
+          options: getOptions(el, defaultOptions)
         }
       });
 
@@ -750,11 +788,40 @@ function(template) {
                .toString(16)
                .substring(1)
   }
+
+  function getOptions(element, defaults) {
+    var opts = {};
+
+    forEach(element.attributes, function(d) {
+      var m = d.name.match(/^validator-(.*)/),
+          val = d.value,
+          name = m && m[1];
+
+      if (!m) return;
+
+      // no default
+      if (!defaults[name]) {
+        opts[name] = val;
+      } else if (defaults[name] && defaults[name].options) {
+        if (~defaults[name].options.indexOf(val)) opts[name] = val;
+      } else {
+        opts[name] = val;
+      }
+    });
+
+    forEach(defaults, function(d, k) {
+      if (!opts.hasOwnProperty(k)) {
+        opts[k] = d && d.default ? d.default : d;
+      }
+    });
+
+    return opts;
+  }
 });
 
 
 (function(c){var d=document,a='appendChild',i='styleSheet',s=d.createElement('style');s.type='text/css';d.getElementsByTagName('head')[0][a](s);s[i]?s[i].cssText=c:s[a](d.createTextNode(c));})
-('.ractive-validator {\n  position: absolute;\n  height: 0;\n  font-family: sans-serif;\n}\n\n.ractive-validator .rv-message {\n  position: absolute;\n  top: 0;\n  right: 100%;\n  width: 150px;\n  text-align: left;\n  padding: 5px;\n  margin-right: 20px;\n  border: solid 1px #8B0300;\n  background: #B94A48;\n  color: #FFF;\n  font-size: 12px;\n  font-weight: bold;\n}\n\n.ractive-validator .rv-message:after,\n.ractive-validator .rv-message:before {\n  left: 100%;\n  border: solid transparent;\n  content: \" \";\n  height: 0;\n  width: 0;\n  position: absolute;\n  pointer-events: none;\n}\n\n.ractive-validator .rv-message:after {\n  border-color: rgba(185, 74, 72, 0);\n  border-left-color: #B94A48;\n  border-width: 8px;\n  margin-top: -8px;\n}\n.ractive-validator .rv-message:before {\n  border-color: rgba(139, 3, 0, 0);\n  border-left-color: #8b0300;\n  border-width: 9px;\n  margin-top: -9px;\n}\n\n.ractive-validator .rv-alert {\n  position: absolute;\n  right: 5px;\n  border-radius: 50%;\n  background: #B94A48;\n  text-align: center;\n  color: #FFF;\n  vertical-align: middle;\n  font-size: 15px;\n  font-family: sans-serif;\n  font-weight: bold;\n}\n');
+('.ractive-validator {\n  position: absolute;\n  height: 0;\n  font-family: sans-serif;\n}\n\n.ractive-validator .rv-message {\n  position: absolute;\n  padding: 5px;\n  border: solid 1px #8B0300;\n  background: #B94A48;\n  color: #FFF;\n  font-size: 12px;\n  font-weight: bold;\n  text-align: left;\n}\n\n.ractive-validator .rv-message:after,\n.ractive-validator .rv-message:before {\n  border: solid transparent;\n  content: \" \";\n  height: 0;\n  width: 0;\n  position: absolute;\n  pointer-events: none;\n}\n\n.ractive-validator .rv-message:after {\n  border-color: rgba(185, 74, 72, 0);\n  border-width: 8px;\n}\n.ractive-validator .rv-message:before {\n  border-color: rgba(139, 3, 0, 0);\n  border-width: 9px;\n}\n\n/* Orient Left */\n\n.ractive-validator.rv-orient-left .rv-message {\n  top: 0;\n  right: 100%;\n  width: 150px;\n  margin-right: 20px;\n}\n\n.ractive-validator.rv-orient-left .rv-message:after,\n.ractive-validator.rv-orient-left .rv-message:before {\n  left: 100%;\n}\n\n.ractive-validator.rv-orient-left .rv-message:after {\n  border-left-color: #B94A48;\n  margin-top: -8px;\n}\n.ractive-validator.rv-orient-left .rv-message:before {\n  border-left-color: #8b0300;\n  margin-top: -9px;\n}\n\n/* Orient Bottom */\n\n.ractive-validator.rv-orient-bottom .rv-message {\n  left: 0px;\n  width: 150px;\n  margin-top: 10px;\n}\n\n.ractive-validator.rv-orient-bottom .rv-message:after,\n.ractive-validator.rv-orient-bottom .rv-message:before {\n  bottom: 100%;\n  left: 15px;\n}\n\n.ractive-validator.rv-orient-bottom .rv-message:after {\n  border-bottom-color: #B94A48;\n  margin-left: -8px;\n}\n.ractive-validator.rv-orient-bottom .rv-message:before {\n  border-bottom-color: #8b0300;\n  margin-left: -9px;\n}\n\n/* Orient Top */\n\n.ractive-validator.rv-orient-top .rv-message {\n  top: -10px;\n  left: 0px;\n  transform: translateY(-100%);\n  width: 150px;\n}\n\n.ractive-validator.rv-orient-top .rv-message:after,\n.ractive-validator.rv-orient-top .rv-message:before {\n  top: 100%;\n  left: 15px;\n}\n\n.ractive-validator.rv-orient-top .rv-message:after {\n  border-top-color: #B94A48;\n  margin-left: -8px;\n}\n.ractive-validator.rv-orient-top .rv-message:before {\n  border-top-color: #8b0300;\n  margin-left: -9px;\n}\n\n/* Orient Right */\n\n.ractive-validator.rv-orient-right .rv-message {\n  top: 0;\n  left: 100%;\n  width: 150px;\n  margin-left: 20px;\n}\n\n.ractive-validator.rv-orient-right .rv-message:after,\n.ractive-validator.rv-orient-right .rv-message:before {\n  right: 100%;\n}\n\n.ractive-validator.rv-orient-right .rv-message:after {\n  border-right-color: #B94A48;\n  margin-top: -8px;\n}\n.ractive-validator.rv-orient-right .rv-message:before {\n  border-right-color: #8b0300;\n  margin-top: -9px;\n}\n\n/* Alert */\n\n.ractive-validator .rv-alert {\n  position: absolute;\n  right: 5px;\n  border-radius: 50%;\n  background: #B94A48;\n  text-align: center;\n  color: #FFF;\n  vertical-align: middle;\n  font-size: 15px;\n  font-family: sans-serif;\n  font-weight: bold;\n}\n');
     require('lib/main');
   });
 }());

@@ -1,13 +1,49 @@
+<style>
+
+  body div.myclassname .rv-message {
+    background: #E6E6E6;
+    color: #000;
+  }
+
+</style>
+
 <form action="javascript:;" on-submit="validator"
       on-validatorSuccess="success">
-  <input type="text" placeholder="name"
-         validator-message="Value is required." validator="required" />
-  <br/>
-  <br/>
-  <input type="text" placeholder="email"
-         validator-message="Must be a valid email"
+
+  <h2>Required Field</h2>
+  <input type="text"
+         validator="required" />
+
+  <h2>Email Field</h2>
+  <input type="text"
          validator="email" />
-  <br/>
-  <br/>
+
+  <h2>Max Length</h2>
+  <input type="text" validator="string,0,3" />
+
+  <h2>Custom Message</h2>
+  <input type="text"
+         validator-message="Field is required, dummy"
+         validator="required" />
+
+  <h2>Top</h2>
+  <input type="text"
+         validator-orientation="top"
+         validator="required" />
+
+  <h2>Bottom</h2>
+  <input type="text"
+         validator-orientation="bottom"
+         validator="required" />
+  <h2>Right</h2>
+  <input type="text"
+         validator-orientation="right"
+         validator="required" />
+
+  <h2>Special Class</h2>
+  <input type="text"
+         validator-class="myclassname"
+         validator="required" />
+
   <input type="submit" />
 </form>
