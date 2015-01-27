@@ -238,6 +238,8 @@ The default styling is in [lib/style.css](lib/style.css). The container div is s
 
 And all css tags start with `.ractive-validator`. So, i you wish to overwrite the default styling, you can do so by making the tag more specific like `body .ractive-validator ...` or `div.ractive-validator`.
 
+Additionally, whenever an input or textarea had in invalid value, it has the class `validator-invalid`, so you can use this to style it (like adding a red border).
+
 ## See Example
 
 To see the example page, clone the repo and run:
