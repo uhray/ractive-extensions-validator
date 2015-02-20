@@ -21,8 +21,8 @@
   },
   "devDependencies": {
     "requirejs": "~2.1.15",
-    "rv": "git://github.com/ractivejs/rv.git#v0.1.8",
     "require-css": "~0.1.8",
-    "almond": "~0.3.0"
+    "almond": "~0.3.0",
+    "rv": "~0.1.8"
   }
 }
