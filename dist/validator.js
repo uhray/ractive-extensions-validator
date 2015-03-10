@@ -600,8 +600,14 @@ function(template) {
       });
 
       this.observe('valid', function(v) {
-        if (v) element.classList.remove('validator-invalid');
-        else element.classList.add('validator-invalid');
+        var p = element.parentElement;
+        if (v) {
+          element.classList.remove('validator-invalid');
+          p && p.classList && p.classList.remove('validator-child-invalid');
+        } else {
+          element.classList.add('validator-invalid');
+          p && p.classList && p.classList.add('validator-child-invalid');
+        }
       });
 
       element.addEventListener('focus', focus);
@@ -728,6 +734,11 @@ function(template) {
             re = /^([\w\-\.]+)@((\[([0-9]{1,3}\.){3}[0-9]{1,3}\])|(([\w\-]+\.)+)([a-zA-Z]{2,4}))$/;
         return { value: val, valid: re.test(str),
                  message: 'Not a valid email.' };
+      },
+
+      checked: function() {
+        return { value: this.value, valid: this.checked,
+                 message: 'Must be checked' };
       }
     },
 
@@ -745,7 +756,7 @@ function(template) {
 
       // Test Validity
       args.unshift(value);
-      res = validator.apply(Ractive, args);
+      res = validator.apply(el, args);
       if (res.valid && el.value != res.value) el.value = res.value;
 
       // Get message

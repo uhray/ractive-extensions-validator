@@ -129,7 +129,7 @@ The value should be a function that takes arguments that are `(value, *args)` wh
 <input type="text" validator="string,5,10" value="test" />
 ```
 
-Would call the `Ractive.prototype.validators.string` function with `('test', 5, 10)`.
+Would call the `Ractive.prototype.validators.string` function with `('test', 5, 10)`. Additionally, the context (`this`) of the function will be the DOM node of the input or textarea element.
 
 The return value of a validator should be an object with the following:
 
@@ -166,6 +166,7 @@ The following are the predefined validators.
   * [string](#validator-string)
   * [required](#validator-required)
   * [email](#validator-email)
+  * [checked](#validator-checked)
 
 <a href="#validator-string" name="#validator-string">#</a> **string**(*min*, *max*)
 
@@ -181,6 +182,10 @@ Makes sure there is some non-empty value.
 <a href="#validator-email" name="#validator-email">#</a> **email**()
 
 Makes sure the value is an email address.
+
+<a href="#validator-checked" name="#validator-checked">#</a> **checked**()
+
+Makes sure the input is checked. This will be falls for all none input typed as checkboxes.
 
 ## Options
 
@@ -250,6 +255,8 @@ The default styling is in [lib/style.css](lib/style.css). The container div is s
 And all css tags start with `.ractive-validator`. So, i you wish to overwrite the default styling, you can do so by making the tag more specific like `body .ractive-validator ...` or `div.ractive-validator`.
 
 Additionally, whenever an input or textarea had in invalid value, it has the class `validator-invalid`, so you can use this to style it (like adding a red border).
+
+AND, whenever an input or textarea had in invalid value, its parent is given the class `validator-child-invalid`, which is useful for styling something like a label for a checkbox.
 
 ## See Example
 

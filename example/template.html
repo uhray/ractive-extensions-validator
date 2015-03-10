@@ -5,6 +5,12 @@
     color: #000;
   }
 
+  .hidden { display: none !important; }
+
+  label.validator-child-invalid {
+    color: #B94A48;
+  }
+
 </style>
 
 <form action="javascript:;" on-submit="validator"
@@ -44,6 +50,14 @@
   <input type="text"
          validator-class="myclassname"
          validator="required" />
+
+  <h2>Checkbox</h2>
+  <label style="display:block">
+    <input type="checkbox"
+           validator-class="hidden"
+           validator="checked" />
+    This is a checkbox
+  </label>
 
   <input type="submit" />
 </form>
