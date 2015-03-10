@@ -225,6 +225,17 @@ Example:
        validator-orientation="bottom" />
 ```
 
+<a href="#options-parent" name="#options-parent">#</a> validator-**parent** = "*queryString*"
+
+By default, the parent of the error messages is `document.body`. If you provide a value here, the parent will be `document.querySelector(queryString)`.
+
+Example:
+
+```html
+<input type="text" validator="email"
+       validator-parent="div.modal" />
+```
+
 ## Styling
 
 The default styling is in [lib/style.css](lib/style.css). The container div is structured like this:

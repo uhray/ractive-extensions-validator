@@ -760,7 +760,8 @@ function(template) {
     },
 
     validatorCreateDiv: function(el, msg, valid) {
-      var div = el._validatorError;
+      var div = el._validatorError,
+          opts;
 
       // Already has a div
       if (div) {
@@ -770,7 +771,9 @@ function(template) {
       }
 
       // need to create one
+      opts = getOptions(el, defaultOptions);
       div = el._validatorError = new MessageDiv({
+        el: opts.parent && document.querySelector(opts.parent) || document.body,
         data: {
           name: createName(),
           element: el,
