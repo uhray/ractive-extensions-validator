@@ -695,7 +695,7 @@ function(template) {
               idx = divs.indexOf(err);
 
           if (err) err.teardown();
-          delete el._validatorError;
+          if (el && el._validatorError) delete el._validatorError;
           if (~idx) divs.slice(idx, 1);
 
           el && el.classList && el.classList.remove('validator-error');
@@ -705,7 +705,7 @@ function(template) {
       this.on('teardown', function() {
         this.validatorDivs.forEach(function(d) {
           var el = d.get('element');
-          if (el) delete el._validatorError;
+          if (el && el._validatorError) delete el._validatorError;
           d.teardown();
           el && el.classList && el.classList.remove('validator-error');
         });
