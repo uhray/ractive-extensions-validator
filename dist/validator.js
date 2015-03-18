@@ -579,11 +579,11 @@ function(template) {
   // ========================== Default Options ============================= //
 
   defaultOptions = {
-    orientation: {
-      default: 'left',
+    _orientation: {
+      _default: 'left',
       options: ['top', 'bottom', 'left', 'right']
     },
-    class: ''
+    _class: ''
   };
 
   // ========================== Create MessageDiv =========================== //
@@ -859,8 +859,9 @@ function(template) {
     });
 
     forEach(defaults, function(d, k) {
+      k = k.replace(/^_/, '');
       if (!opts.hasOwnProperty(k)) {
-        opts[k] = d && d.default ? d.default : d;
+        opts[k] = d && d._default ? d._default : d;
       }
     });
 
