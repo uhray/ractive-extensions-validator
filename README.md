@@ -232,7 +232,7 @@ Example:
 
 <a href="#options-parent" name="#options-parent">#</a> validator-**parent** = "*queryString*"
 
-By default, the parent of the error messages is `document.body`. If you provide a value here, the parent will be `document.querySelector(queryString)`.
+By default, the parent of an error message is the parent of the input or textarea. If you provide a value here, the parent will be `document.querySelector(queryString)`.
 
 Example:
 

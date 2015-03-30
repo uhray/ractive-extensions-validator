@@ -523,12 +523,13 @@ define("rv!lib/template",[],function(){return { v:1,
             style:[ "width:",
               { t:2,
                 r:"width" },
-              ";top:",
+              "px;top:",
               { t:2,
                 r:"top" },
-              ";left:",
+              "px;left:",
               { t:2,
-                r:"left" } ] },
+                r:"left" },
+              "px" ] },
           f:[ { t:4,
               n:51,
               r:"valid",
@@ -784,7 +785,7 @@ function(template) {
 
     validatorCreateDiv: function(el, msg, valid) {
       var div = el._validatorError,
-          opts;
+          getParent, opts;
 
       // Already has a div
       if (div) {
@@ -796,7 +797,8 @@ function(template) {
       // need to create one
       opts = getOptions(el, defaultOptions);
       div = el._validatorError = new MessageDiv({
-        el: opts.parent && document.querySelector(opts.parent) || document.body,
+        el: opts.parent && document.querySelector(opts.parent) ||
+            el.parentElement || document.body,
         data: {
           name: createName(),
           element: el,
