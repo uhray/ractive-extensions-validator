@@ -183,6 +183,12 @@ Makes sure there is some non-empty value.
 
 Makes sure the value is an email address.
 
+<a href="#validator-url" name="#validator-url">#</a> **url**(http)
+
+Makes sure the value is a url.
+
+  * *http* - `Boolean` (Default: `false`) - If `true`, appends 'http://' to all urls if they do not have a protocol specified.
+
 <a href="#validator-checked" name="#validator-checked">#</a> **checked**()
 
 Makes sure the input is checked. This will be falls for all none input typed as checkboxes.
