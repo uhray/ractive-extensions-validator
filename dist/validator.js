@@ -775,6 +775,18 @@ function(template) {
         var str = String(val),
             re = new RegExp(p);
         return { value: val, valid: re.test(str), message: 'Not a valid url.' };
+      },
+
+      samevalue: function(val, s) {
+        var el = document.querySelector(s || '');
+
+        if (!el) return { value: val, valid: false, message: 'Match not found.' };
+
+        return {
+          value: val,
+          valid: val == el.value,
+          message: 'Values must match'
+        }
       }
     },
 

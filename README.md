@@ -166,7 +166,10 @@ The following are the predefined validators.
   * [string](#validator-string)
   * [required](#validator-required)
   * [email](#validator-email)
+  * [url](#validator-url)
+  * [pattern](#validator-pattern)
   * [checked](#validator-checked)
+  * [samevalue](#validator-samevalue)
 
 <a href="#validator-string" name="#validator-string">#</a> **string**(*min*, *max*)
 
@@ -189,9 +192,21 @@ Makes sure the value is a url.
 
   * *http* - `Boolean` (Default: `false`) - If `true`, appends 'http://' to all urls if they do not have a protocol specified.
 
+<a href="#validator-pattern" name="#validator-pattern">#</a> **pattern**(pattern)
+
+Makes sure the value matches the pattern.
+
+  * *pattern* - `String` (Required) - This string is converted to a RegExp and then used to test against the value.
+
 <a href="#validator-checked" name="#validator-checked">#</a> **checked**()
 
 Makes sure the input is checked. This will be falls for all none input typed as checkboxes.
+
+<a href="#validator-samevalue" name="#validator-samevalue">#</a> **samevalue**(query)
+
+Makes sure the value matches the same value of another element.
+
+  * *query* - `String` (Required) - This string is passed to `document.querySelector` to find the other element. The values of the two elements must match.
 
 ## Options
 
