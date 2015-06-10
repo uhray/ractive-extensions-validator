@@ -568,7 +568,7 @@ if("document" in self){if(!("classList" in document.createElement("_"))){(functi
 
 // jscs:enable
 ;
-i/**
+/**
  * @license ractive-validator Copyright (c) 2014, Uhray LLC
  * Available via the MIT license.
  * see: http://github.com/uhray for details
