@@ -568,7 +568,7 @@ if("document" in self){if(!("classList" in document.createElement("_"))){(functi
 
 // jscs:enable
 ;
-/**
+i/**
  * @license ractive-validator Copyright (c) 2014, Uhray LLC
  * Available via the MIT license.
  * see: http://github.com/uhray for details
@@ -760,7 +760,7 @@ function(template) {
                             '[a-zA-Z]{2,3}(:[a-zA-Z0-9]*)?/?' +
                             '([a-zA-Z0-9\-\._\?\,\'/\\\+&amp;%\$#\=~])*$'),
             re2 = new RegExp('((http|https|ftp)(\://)?)$'),
-            t1 = re.test(str) && str.match(/\./),
+            t1 = re.test(str) && str.match(/\.[a-z]/i),
             t2 = re2.test(str);
 
         if (http && t1 && !t2 &&
@@ -780,7 +780,8 @@ function(template) {
       samevalue: function(val, s) {
         var el = document.querySelector(s || '');
 
-        if (!el) return { value: val, valid: false, message: 'Match not found.' };
+        if (!el)
+          return { value: val, valid: false, message: 'Match not found.' };
 
         return {
           value: val,
