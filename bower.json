@@ -16,7 +16,7 @@
     "package.json"
   ],
   "dependencies": {
-    "ractive": "~0.6.1"
+    "ractive": "~0.7.3"
   },
   "devDependencies": {
     "requirejs": "~2.1.15",
