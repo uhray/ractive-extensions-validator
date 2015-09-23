@@ -186,11 +186,12 @@ Makes sure there is some non-empty value.
 
 Makes sure the value is an email address.
 
-<a href="#validator-url" name="#validator-url">#</a> **url**(http)
+<a href="#validator-url" name="#validator-url">#</a> **url**([http, required])
 
 Makes sure the value is a url.
 
   * *http* - `Boolean` (Default: `false`) - If `true`, appends 'http://' to all urls if they do not have a protocol specified.
+  * *required* - `Boolean` (Default: `false`) - If `true`, requires a url. Otherwise an empty value is valid.
 
 <a href="#validator-pattern" name="#validator-pattern">#</a> **pattern**(pattern)
 
