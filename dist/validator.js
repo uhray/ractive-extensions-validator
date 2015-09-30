@@ -661,6 +661,19 @@ function(template) {
     }
   };
 
+  Ractive.events.validatorFailure = function(node, fire) {
+    var self = this;
+
+    node._fireValidatorFailure = function(event, e) {
+      fire({
+        node: node,
+        name: 'validator-failure',
+        target: self,
+        original: event
+      });
+    }
+  };
+
   // ========================== Define Extension ============================ //
 
   extension = Ractive.extend({
@@ -685,6 +698,9 @@ function(template) {
           this.fire('validator-clear', node);
           node && node._fireValidatorSuccess &&
                   node._fireValidatorSuccess(event.original);
+        } else {
+          node && node._fireValidatorFailure &&
+                  node._fireValidatorFailure(event.original);
         }
       });
 
@@ -765,7 +781,7 @@ function(template) {
             t2 = re2.test(str);
 
         if (!str) {  // no value
-         return { value: str, valid: !required, message: 'URL required.' };
+          return { value: str, valid: !required, message: 'URL required.' };
         }
 
         if (http && t1 && !t2 &&
@@ -814,9 +830,9 @@ function(template) {
       if (res.valid && el.value != res.value) {
         el.value = res.value;
         if ('createEvent' in document) {
-            evt = document.createEvent('HTMLEvents');
-            evt.initEvent('input', false, true);
-            el.dispatchEvent(evt);
+          evt = document.createEvent('HTMLEvents');
+          evt.initEvent('input', false, true);
+          el.dispatchEvent(evt);
         } else el.fireEvent('oninput');
       }
 

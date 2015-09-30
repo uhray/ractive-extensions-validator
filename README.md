@@ -77,7 +77,7 @@ However, this doesn't actually do anything yet. Instead, it just sets an attribu
 
 So, when the form is submitted, validator will run its validation. The validation works like this:
 
-  1. When you first run the validation, it will validate each input. If everything is good, it fires `validatorSuccess`. If something is wrong, keep going.
+  1. When you first run the validation, it will validate each input. If everything is good, it fires `validatorSuccess`. If something is wrong, keep going and fires `validatorFailure`.
   2. Once the validator has been initially called, the inputs will be watched for any key-ups that change the value. If the value ever becomes "valid", then the styled validator warnings will be hidden (until/unless it becomes invalid again). If it ever becomes invalid, the styled validator warnings will appear.
   3. If you ever fire submit again, it will jump back to number 1.
 
@@ -88,6 +88,16 @@ When `validator` is fired and everything is correct, the container div emits the
 ```html
 <form action="javacript:;" on-submit="validator"
       on-validatorSuccess="whateveryouwant">
+  <input type="text" validator="email" />
+  <input type="submit" />
+</form>
+```
+
+If it fails, you can catch this event with `validatorFailure`:
+
+```html
+<form action="javacript:;" on-submit="validator"
+      on-validatorFailure="whateveryouwant">
   <input type="text" validator="email" />
   <input type="submit" />
 </form>
