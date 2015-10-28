@@ -698,9 +698,11 @@ function(template) {
           this.fire('validator-clear', node);
           node && node._fireValidatorSuccess &&
                   node._fireValidatorSuccess(event.original);
+          this.fire('validatorSuccess', event.original);
         } else {
           node && node._fireValidatorFailure &&
                   node._fireValidatorFailure(event.original);
+          this.fire('validatorFailure', event.original);
         }
       });
 
