@@ -13,7 +13,7 @@ require.config({
   }
 });
 
-requirejs(['ractive', 'rv!example/template', 'lib/main'],
+requirejs(['ractive', 'rv!example/template', 'dist/validator'],
 function(Ractive, template) {
   var ractive = new Ractive({
         el: '#container',
