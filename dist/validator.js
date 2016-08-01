@@ -918,7 +918,6 @@ function(template) {
                   el.parentElement || document.body;
 
       if (opts.insertMode == 'append') {
-        console.log('append');
         par = document.createElement('div');
         par.classList.add('rv-parent-append');
         getParent.parentNode.insertBefore(par, getParent.nextSibling);
