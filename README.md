@@ -64,8 +64,13 @@ Additionally, you'll need to include the css file in your HTML or use the @impor
 
 **SASS**: (in your scss file)
 
-$ractive-validator-red: #B94A48;  // You can change the default error red
+```scss
+$ractive-validator-red: #B94A48;                    // Default error red
+$ractive-validator-text: #FFF !default;             // Default text on red
+$ractive-validator-font-weight: 'normal' !default;  // Default font weight
+$ractive-validator-font-size: 1em !default;         // Default font size
 @import 'bower/ractive-extensions-validator/lib/style';
+```
 
 
 Now the validator is yours to use how you wish.

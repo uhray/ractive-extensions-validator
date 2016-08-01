@@ -1,6 +1,8 @@
 
 $ractive-validator-red: #B94A48 !default;
 $ractive-validator-text: #FFF !default;
+$ractive-validator-font-weight: 'normal' !default;
+$ractive-validator-font-size: 1em !default;
 $ractive-validator-border: darken($ractive-validator-red, 3%) !default;
 
 .ractive-validator {
@@ -15,8 +17,8 @@ $ractive-validator-border: darken($ractive-validator-red, 3%) !default;
   border: solid 1px $ractive-validator-border;
   background: $ractive-validator-red;
   color: $ractive-validator-text;
-  font-size: 12px;
-  font-weight: bold;
+  font-size: $ractive-validator-font-size;
+  font-weight: $ractive-validator-font-weight;
   text-align: left;
 }
 
