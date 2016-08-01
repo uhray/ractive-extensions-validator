@@ -1,0 +1,176 @@
+
+$ractive-validator-red: #B94A48 !default;
+$ractive-validator-text: #FFF !default;
+$ractive-validator-border: darken($ractive-validator-red, 3%) !default;
+
+.ractive-validator {
+  position: absolute;
+  height: 0;
+  font-family: sans-serif;
+}
+
+.ractive-validator .rv-message {
+  position: absolute;
+  padding: 5px;
+  border: solid 1px $ractive-validator-border;
+  background: $ractive-validator-red;
+  color: $ractive-validator-text;
+  font-size: 12px;
+  font-weight: bold;
+  text-align: left;
+}
+
+.ractive-validator .rv-message:after,
+.ractive-validator .rv-message:before {
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+}
+
+.ractive-validator .rv-message:after {
+  border-left-color: $ractive-validator-red;
+  border-width: 8px;
+}
+.ractive-validator .rv-message:before {
+  border-left-color: $ractive-validator-border;
+  border-width: 9px;
+}
+
+/* Orient Left */
+
+.ractive-validator.rv-orient-left .rv-message {
+  top: 0;
+  right: 100%;
+  width: 150px;
+  margin-right: 20px;
+}
+
+.ractive-validator.rv-orient-left .rv-message:after,
+.ractive-validator.rv-orient-left .rv-message:before {
+  left: 100%;
+}
+
+.ractive-validator.rv-orient-left .rv-message:after {
+  border-left-color: $ractive-validator-red;
+  margin-top: -8px;
+}
+.ractive-validator.rv-orient-left .rv-message:before {
+  border-left-color: $ractive-validator-border;
+  margin-top: -9px;
+}
+
+/* Orient Bottom */
+
+.ractive-validator.rv-orient-bottom .rv-message {
+  left: 0px;
+  width: 150px;
+  margin-top: 10px;
+}
+
+.ractive-validator.rv-orient-bottom .rv-message:after,
+.ractive-validator.rv-orient-bottom .rv-message:before {
+  bottom: 100%;
+  left: 15px;
+}
+
+.ractive-validator.rv-orient-bottom .rv-message:after {
+  border-bottom-color: $ractive-validator-red;
+  margin-left: -8px;
+}
+.ractive-validator.rv-orient-bottom .rv-message:before {
+  border-bottom-color: $ractive-validator-border;
+  margin-left: -9px;
+}
+
+/* Orient Top */
+
+.ractive-validator.rv-orient-top .rv-message {
+  top: -10px;
+  left: 0px;
+  transform: translateY(-100%);
+  width: 150px;
+}
+
+.ractive-validator.rv-orient-top .rv-message:after,
+.ractive-validator.rv-orient-top .rv-message:before {
+  top: 100%;
+  left: 15px;
+}
+
+.ractive-validator.rv-orient-top .rv-message:after {
+  border-top-color: $ractive-validator-red;
+  margin-left: -8px;
+}
+.ractive-validator.rv-orient-top .rv-message:before {
+  border-top-color: $ractive-validator-border;
+  margin-left: -9px;
+}
+
+/* Orient Right */
+
+.ractive-validator.rv-orient-right .rv-message {
+  top: 0;
+  left: 100%;
+  width: 150px;
+  margin-left: 20px;
+}
+
+.ractive-validator.rv-orient-right .rv-message:after,
+.ractive-validator.rv-orient-right .rv-message:before {
+  right: 100%;
+}
+
+.ractive-validator.rv-orient-right .rv-message:after {
+  border-right-color: $ractive-validator-red;
+  margin-top: -8px;
+}
+.ractive-validator.rv-orient-right .rv-message:before {
+  border-right-color: $ractive-validator-border;
+  margin-top: -9px;
+}
+
+/* Orient Inline */
+.validator-child-invalid.validator-parent-orient-inline {
+  input, textarea {
+    border-color: $ractive-validator-red;
+    outline: 0;
+  }
+}
+
+.ractive-validator.rv-orient-inline {
+  position: relative;
+  height: auto;
+}
+
+.ractive-validator.rv-orient-inline .rv-message {
+  position: static;
+  display: block;
+  color: $ractive-validator-red;
+  background: transparent;
+  border-color: transparent;
+
+  &:after, &:before { display: none !important; }
+}
+
+.ractive-validator.rv-orient-inline .rv-alert {
+  display: none !important;
+}
+
+
+/* Alert */
+
+.ractive-validator .rv-alert {
+  position: absolute;
+  right: 5px;
+  border-radius: 50%;
+  background: $ractive-validator-red;
+  text-align: center;
+  color: $ractive-validator-text;
+  vertical-align: middle;
+  font-size: 15px;
+  font-family: sans-serif;
+  font-weight: bold;
+}

@@ -54,6 +54,20 @@ define(['ractive', 'path/to/validator/dist/validator.min'], function(Ractive) {
 })
 ```
 
+Additionally, you'll need to include the css file in your HTML or use the @import to include the sass directly. Examples below:
+
+**CSS**: (in your html file)
+
+```
+<link rel="stylesheet" type="text/css" href="{path/to/validator}/dist/style.css" />
+```
+
+**SASS**: (in your scss file)
+
+$ractive-validator-red: #B94A48;  // You can change the default error red
+@import 'bower/ractive-extensions-validator/lib/style';
+
+
 Now the validator is yours to use how you wish.
 
 To set the validator on an input or textarea, do like this:
@@ -221,7 +235,16 @@ Makes sure the value matches the same value of another element.
 
 ## Options
 
-You can set various options on validator elements. See here:
+You can set various options on validator elements. You do so by providing it on the HTML element (e.g. `<input validator-[optionName]="optionValue" />`). Alternatively, you can change the validator defaults like this:
+
+```js
+   Ractive.prototype.validatorDefaultOptions({
+    orientation: 'inline',
+    insertMode: 'append'
+  });
+```
+
+See the options below:
 
 <a href="#options-message" name="#options-message">#</a> validator-**message** = "*msg*"
 
@@ -253,7 +276,7 @@ Example:
 
 <a href="#options-orientation" name="#options-orientation">#</a> validator-**orientation** = "*orientation*"
 
-By default, the error message is with *orientation* as 'left'. The orientation describes what side of the input or textarea the error message is displayed. Options are top, bottom, left, and right.
+By default, the error message is with *orientation* as 'inline'. The orientation describes what side of the input or textarea the error message is displayed. Options are top, bottom, left, right, and inline.
 
 Example:
 
@@ -272,6 +295,13 @@ Example:
 <input type="text" validator="email"
        validator-parent="div.modal" />
 ```
+
+<a href="#options-insertMode" name="#options-insertMode">#</a> validator-**insertMode** = "*mode*"
+
+There are two different insert modes: `insert` and `append`. This has to do with where the elements are placed relative to the parent:
+
+  * **insert** - `default` - places it at the end of the parent, but within the parent.
+  * **append** - places it immediately after the parent
 
 ## Styling
 

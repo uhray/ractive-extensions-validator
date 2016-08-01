@@ -441,28 +441,33 @@ define("rv!lib/template",[],function(){return { v:3,
       a:{ "class":"ractive-validator-container" },
       f:[ { t:7,
           e:"style",
-          f:[ ".",
-            { t:2,
-              r:"name" },
-            ".ractive-validator {\n      width:",
-            { t:2,
-              r:"width" },
-            "px;\n      top:",
-            { t:2,
-              r:"top" },
-            "px;\n      left:",
-            { t:2,
-              r:"left" },
-            "px;\n    }\n\n    .",
-            { t:2,
-              r:"name" },
-            ".ractive-validator .rv-message {\n      min-height: ",
-            { t:2,
-              x:{ r:[ "height" ],
-                s:"_0-10" } },
-            "px;\n    }\n",
+          f:[ { t:4,
+              f:[ "\n      .",
+                { t:2,
+                  r:"name" },
+                ".ractive-validator {\n        width:",
+                { t:2,
+                  r:"width" },
+                "px;\n        top:",
+                { t:2,
+                  r:"top" },
+                "px;\n        left:",
+                { t:2,
+                  r:"left" },
+                "px;\n      }\n\n      .",
+                { t:2,
+                  r:"name" },
+                ".ractive-validator .rv-message {\n        min-height: ",
+                { t:2,
+                  x:{ r:[ "height" ],
+                    s:"_0-10" } },
+                "px;\n      }\n" ],
+              n:50,
+              x:{ r:[ "orientation" ],
+                s:"_0!=\"inline\"" } },
+            "    ",
             { t:4,
-              f:[ "      .",
+              f:[ "\n      .",
                 { t:2,
                   r:"name" },
                 ".ractive-validator .rv-message:after,\n      .",
@@ -488,75 +493,113 @@ define("rv!lib/template",[],function(){return { v:3,
               n:50,
               x:{ r:[ "options.orientation" ],
                 s:"_0==\"bottom\"" } },
-            "    .",
-            { t:2,
-              r:"name" },
-            ".ractive-validator .rv-alert {\n      top: ",
-            { t:2,
-              x:{ r:[ "height" ],
-                s:"_0/2" } },
-            "px;\n      margin-top: -",
-            { t:2,
-              x:{ r:[ "alert.width" ],
-                s:"_0/2" } },
-            "px;\n      height: ",
-            { t:2,
-              r:"alert.width" },
-            "px;\n      line-height: ",
-            { t:2,
-              r:"alert.width" },
-            "px;\n      width: ",
-            { t:2,
-              r:"alert.width" },
-            "px;\n    }" ] },
+            "    ",
+            { t:4,
+              f:[ "\n      .",
+                { t:2,
+                  r:"name" },
+                ".ractive-validator .rv-alert {\n        top: ",
+                { t:2,
+                  x:{ r:[ "height" ],
+                    s:"_0/2" } },
+                "px;\n        margin-top: -",
+                { t:2,
+                  x:{ r:[ "alert.width" ],
+                    s:"_0/2" } },
+                "px;\n        height: ",
+                { t:2,
+                  r:"alert.width" },
+                "px;\n        line-height: ",
+                { t:2,
+                  r:"alert.width" },
+                "px;\n        width: ",
+                { t:2,
+                  r:"alert.width" },
+                "px;\n      }\n" ],
+              n:50,
+              x:{ r:[ "orientation" ],
+                s:"_0!=\"inline\"" } } ] },
         " ",
-        { t:7,
-          e:"div",
-          a:{ "class":[ { t:2,
-                r:"name" },
-              " ",
-              { t:2,
-                r:"options.class" },
-              " rv-orient-",
-              { t:2,
-                r:"options.orientation" },
-              " ractive-validator" ],
-            style:[ "width:",
-              { t:2,
-                r:"width" },
-              "px;top:",
-              { t:2,
-                r:"top" },
-              "px;left:",
-              { t:2,
-                r:"left" },
-              "px" ] },
-          f:[ { t:4,
-              f:[ { t:7,
-                  e:"div",
-                  a:{ "class":"rv-message",
-                    style:[ "display:",
-                      { t:2,
-                        x:{ r:[ "active" ],
-                          s:"_0?\"block\":\"none\"" } } ] },
-                  f:[ { t:2,
-                      r:"message" } ] },
-                " ",
-                { t:7,
-                  e:"div",
-                  a:{ "class":"rv-alert",
-                    style:[ "display:",
-                      { t:2,
-                        x:{ r:[ "active" ],
-                          s:"_0?\"none\":\"block\"" } } ] },
-                  v:{ click:"alert-click" },
-                  f:[ "!" ] } ],
-              n:51,
-              r:"valid" } ] } ] } ] };});
-;
-define('css',{load: function(id){throw new Error("Dynamic load not allowed: " + id);}});
-
-define('css!lib/style',[],function(){});
+        { t:4,
+          f:[ { t:7,
+              e:"div",
+              a:{ "class":[ { t:2,
+                    r:"name" },
+                  " ",
+                  { t:2,
+                    r:"options.class" },
+                  " rv-orient-",
+                  { t:2,
+                    r:"options.orientation" },
+                  " ractive-validator" ] },
+              f:[ { t:4,
+                  f:[ { t:7,
+                      e:"div",
+                      a:{ "class":"clearfix" } },
+                    " ",
+                    { t:7,
+                      e:"div",
+                      a:{ "class":"rv-message" },
+                      f:[ { t:2,
+                          r:"message" } ] },
+                    " ",
+                    { t:7,
+                      e:"div",
+                      a:{ "class":"rv-alert" },
+                      v:{ click:"alert-click" },
+                      f:[ "!" ] } ],
+                  n:51,
+                  r:"valid" } ] } ],
+          n:50,
+          x:{ r:[ "orientation" ],
+            s:"_0==\"inline\"" } },
+        { t:4,
+          n:51,
+          f:[ { t:7,
+              e:"div",
+              a:{ "class":[ { t:2,
+                    r:"name" },
+                  " ",
+                  { t:2,
+                    r:"options.class" },
+                  " rv-orient-",
+                  { t:2,
+                    r:"options.orientation" },
+                  " ractive-validator" ],
+                style:[ "width:",
+                  { t:2,
+                    r:"width" },
+                  "px;top:",
+                  { t:2,
+                    r:"top" },
+                  "px;left:",
+                  { t:2,
+                    r:"left" },
+                  "px" ] },
+              f:[ { t:4,
+                  f:[ { t:7,
+                      e:"div",
+                      a:{ "class":"rv-message",
+                        style:[ "display:",
+                          { t:2,
+                            x:{ r:[ "active" ],
+                              s:"_0?\"block\":\"none\"" } } ] },
+                      f:[ { t:2,
+                          r:"message" } ] },
+                    " ",
+                    { t:7,
+                      e:"div",
+                      a:{ "class":"rv-alert",
+                        style:[ "display:",
+                          { t:2,
+                            x:{ r:[ "active" ],
+                              s:"_0?\"none\":\"block\"" } } ] },
+                      v:{ click:"alert-click" },
+                      f:[ "!" ] } ],
+                  n:51,
+                  r:"valid" } ] } ],
+          x:{ r:[ "orientation" ],
+            s:"_0==\"inline\"" } } ] } ] };});
 // jscs:disable
 
 define('lib/polyfills',[],function() {
@@ -574,7 +617,7 @@ if("document" in self){if(!("classList" in document.createElement("_"))){(functi
  * Available via the MIT license.
  * see: http://github.com/uhray for details
  */
-define('lib/main',['rv!./template', 'css!./style', './polyfills'],
+define('lib/main',['rv!./template', './polyfills'],
 function(template) {
   var extension, MessageDiv, defaultOptions;
 
@@ -582,8 +625,12 @@ function(template) {
 
   defaultOptions = {
     _orientation: {
-      _default: 'left',
-      options: ['top', 'bottom', 'left', 'right']
+      _default: 'inline',
+      options: ['top', 'bottom', 'left', 'right', 'inline']
+    },
+    _insertMode: {
+      _default: 'insert',
+      options: ['insert', 'append']
     },
     _class: ''
   };
@@ -603,15 +650,17 @@ function(template) {
           parent = this.get('parent'),
           bound = element.getBoundingClientRect();
 
-      this.set({
-        width: bound.width,
-        top: element.offsetTop,
-        left: element.offsetLeft,
-        height: bound.height,
-        alert: {
-          width: Math.min(bound.height - 4, 23)
-        }
-      });
+      if (this.get('orientation') != 'inline') {
+        this.set({
+          width: bound.width,
+          top: element.offsetTop,
+          left: element.offsetLeft,
+          height: bound.height,
+          alert: {
+            width: Math.min(bound.height - 4, 23)
+          }
+        });
+      }
 
       this.observe('valid', function(v) {
         var p = element.parentElement;
@@ -621,6 +670,9 @@ function(template) {
         } else {
           element.classList.add('validator-invalid');
           p && p.classList && p.classList.add('validator-child-invalid');
+          p && p.classList && p.classList.add(
+            'validator-parent-orient-' + this.get('orientation')
+          );
         }
       });
 
@@ -851,7 +903,7 @@ function(template) {
 
     validatorCreateDiv: function(el, msg, valid) {
       var div = el._validatorError,
-          getParent, opts;
+          getParent, par, opts;
 
       // Already has a div
       if (div) {
@@ -862,21 +914,52 @@ function(template) {
 
       // need to create one
       opts = getOptions(el, defaultOptions);
+      getParent = opts.parent && document.querySelector(opts.parent) ||
+                  el.parentElement || document.body;
+
+      if (opts.insertMode == 'append') {
+        console.log('append');
+        par = document.createElement('div');
+        par.classList.add('rv-parent-append');
+        getParent.parentNode.insertBefore(par, getParent.nextSibling);
+      } else par = getParent;
+
       div = el._validatorError = new MessageDiv({
-        el: opts.parent && document.querySelector(opts.parent) ||
-            el.parentElement || document.body,
+        el: par,
         data: {
           name: createName(),
           element: el,
           valid: valid,
           message: msg,
           parent: this,
-          options: getOptions(el, defaultOptions)
+          orientation: opts.orientation,
+          options: opts
         }
       });
 
       // Add to list
       this.validatorDivs.push(div);
+    },
+
+    validatorDefaultOptions: function(o) {
+      forEach(o || {}, function(val, name) {
+        name = '_' + name;
+
+        // no default
+        if (!defaultOptions[name]) set(name, val);
+        else if (defaultOptions[name] && defaultOptions[name].options) {
+          if (~defaultOptions[name].options.indexOf(val)) set(name, val);
+        } else set(name, val);
+      });
+
+      return defaultOptions;
+
+      function set(k, v) {
+        if (defaultOptions[k] &&
+            ('_default' in defaultOptions[k])) {
+          defaultOptions[k]._default = v;
+        } else defaultOptions[k] = v;
+      }
     }
   });
 
@@ -937,9 +1020,6 @@ function(template) {
   }
 });
 
-
-(function(c){var d=document,a='appendChild',i='styleSheet',s=d.createElement('style');s.type='text/css';d.getElementsByTagName('head')[0][a](s);s[i]?s[i].cssText=c:s[a](d.createTextNode(c));})
-('.ractive-validator {\n  position: absolute;\n  height: 0;\n  font-family: sans-serif;\n}\n\n.ractive-validator .rv-message {\n  position: absolute;\n  padding: 5px;\n  border: solid 1px #8B0300;\n  background: #B94A48;\n  color: #FFF;\n  font-size: 12px;\n  font-weight: bold;\n  text-align: left;\n}\n\n.ractive-validator .rv-message:after,\n.ractive-validator .rv-message:before {\n  border: solid transparent;\n  content: \" \";\n  height: 0;\n  width: 0;\n  position: absolute;\n  pointer-events: none;\n}\n\n.ractive-validator .rv-message:after {\n  border-color: rgba(185, 74, 72, 0);\n  border-width: 8px;\n}\n.ractive-validator .rv-message:before {\n  border-color: rgba(139, 3, 0, 0);\n  border-width: 9px;\n}\n\n/* Orient Left */\n\n.ractive-validator.rv-orient-left .rv-message {\n  top: 0;\n  right: 100%;\n  width: 150px;\n  margin-right: 20px;\n}\n\n.ractive-validator.rv-orient-left .rv-message:after,\n.ractive-validator.rv-orient-left .rv-message:before {\n  left: 100%;\n}\n\n.ractive-validator.rv-orient-left .rv-message:after {\n  border-left-color: #B94A48;\n  margin-top: -8px;\n}\n.ractive-validator.rv-orient-left .rv-message:before {\n  border-left-color: #8b0300;\n  margin-top: -9px;\n}\n\n/* Orient Bottom */\n\n.ractive-validator.rv-orient-bottom .rv-message {\n  left: 0px;\n  width: 150px;\n  margin-top: 10px;\n}\n\n.ractive-validator.rv-orient-bottom .rv-message:after,\n.ractive-validator.rv-orient-bottom .rv-message:before {\n  bottom: 100%;\n  left: 15px;\n}\n\n.ractive-validator.rv-orient-bottom .rv-message:after {\n  border-bottom-color: #B94A48;\n  margin-left: -8px;\n}\n.ractive-validator.rv-orient-bottom .rv-message:before {\n  border-bottom-color: #8b0300;\n  margin-left: -9px;\n}\n\n/* Orient Top */\n\n.ractive-validator.rv-orient-top .rv-message {\n  top: -10px;\n  left: 0px;\n  transform: translateY(-100%);\n  width: 150px;\n}\n\n.ractive-validator.rv-orient-top .rv-message:after,\n.ractive-validator.rv-orient-top .rv-message:before {\n  top: 100%;\n  left: 15px;\n}\n\n.ractive-validator.rv-orient-top .rv-message:after {\n  border-top-color: #B94A48;\n  margin-left: -8px;\n}\n.ractive-validator.rv-orient-top .rv-message:before {\n  border-top-color: #8b0300;\n  margin-left: -9px;\n}\n\n/* Orient Right */\n\n.ractive-validator.rv-orient-right .rv-message {\n  top: 0;\n  left: 100%;\n  width: 150px;\n  margin-left: 20px;\n}\n\n.ractive-validator.rv-orient-right .rv-message:after,\n.ractive-validator.rv-orient-right .rv-message:before {\n  right: 100%;\n}\n\n.ractive-validator.rv-orient-right .rv-message:after {\n  border-right-color: #B94A48;\n  margin-top: -8px;\n}\n.ractive-validator.rv-orient-right .rv-message:before {\n  border-right-color: #8b0300;\n  margin-top: -9px;\n}\n\n/* Alert */\n\n.ractive-validator .rv-alert {\n  position: absolute;\n  right: 5px;\n  border-radius: 50%;\n  background: #B94A48;\n  text-align: center;\n  color: #FFF;\n  vertical-align: middle;\n  font-size: 15px;\n  font-family: sans-serif;\n  font-weight: bold;\n}\n');
     require('lib/main');
   });
 }());

@@ -1,14 +1,16 @@
 <div class="ractive-validator-container">
   <style>
-    .{{name}}.ractive-validator {
-      width:{{width}}px;
-      top:{{top}}px;
-      left:{{left}}px;
-    }
+    {{#if orientation != 'inline'}}
+      .{{name}}.ractive-validator {
+        width:{{width}}px;
+        top:{{top}}px;
+        left:{{left}}px;
+      }
 
-    .{{name}}.ractive-validator .rv-message {
-      min-height: {{height - 10}}px;
-    }
+      .{{name}}.ractive-validator .rv-message {
+        min-height: {{height - 10}}px;
+      }
+    {{/if}}
 
     {{#if options.orientation == 'left' || options.orientation == 'right'}}
       .{{name}}.ractive-validator .rv-message:after,
@@ -23,25 +25,37 @@
       }
     {{/if}}
 
-    .{{name}}.ractive-validator .rv-alert {
-      top: {{height / 2}}px;
-      margin-top: -{{alert.width/2}}px;
-      height: {{alert.width}}px;
-      line-height: {{alert.width}}px;
-      width: {{alert.width}}px;
-    }
+    {{#if orientation != 'inline'}}
+      .{{name}}.ractive-validator .rv-alert {
+        top: {{height / 2}}px;
+        margin-top: -{{alert.width/2}}px;
+        height: {{alert.width}}px;
+        line-height: {{alert.width}}px;
+        width: {{alert.width}}px;
+      }
+    {{/if}}
 
   </style>
 
-  <div class="{{name}} {{options.class}} rv-orient-{{options.orientation}} ractive-validator"
-       style="width:{{width}}px;top:{{top}}px;left:{{left}}px">
-    {{#unless valid}}
-      <div class="rv-message" style="display:{{active ? 'block' : 'none'}}">
-        {{message}}
-      </div>
-      <div class="rv-alert"
-           style="display:{{active ? 'none' : 'block'}}"
-           on-click="alert-click"> ! </div>
-    {{/unless}}
-  </div>
+  {{#if orientation == 'inline'}}
+    <div class="{{name}} {{options.class}} rv-orient-{{options.orientation}} ractive-validator">
+      {{#unless valid}}
+        <div class="clearfix"></div>
+        <div class="rv-message"> {{message}} </div>
+        <div class="rv-alert" on-click="alert-click"> ! </div>
+      {{/unless}}
+    </div>
+  {{else}}
+    <div class="{{name}} {{options.class}} rv-orient-{{options.orientation}} ractive-validator"
+         style="width:{{width}}px;top:{{top}}px;left:{{left}}px">
+      {{#unless valid}}
+        <div class="rv-message" style="display:{{active ? 'block' : 'none'}}">
+          {{message}}
+        </div>
+        <div class="rv-alert"
+             style="display:{{active ? 'none' : 'block'}}"
+             on-click="alert-click"> ! </div>
+      {{/unless}}
+    </div>
+  {{/if}}
 </div>

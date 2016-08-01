@@ -1,4 +1,6 @@
 var gulp = require('gulp'),
+    sass = require('gulp-ruby-sass'),
+    autoprefixer = require('gulp-autoprefixer'),
     child = require('child_process');
 
 // Top Level Commands ----------------------------------------------------------
@@ -6,7 +8,7 @@ var gulp = require('gulp'),
 gulp.task('default', ['info']);
 gulp.task('lint', ['dolint']);
 gulp.task('example', ['serve']);
-gulp.task('build', ['build-min', 'build-max']);
+gulp.task('build', ['build-min', 'build-max', 'build-sass']);
 
 // Helper Tasks ----------------------------------------------------------------
 
@@ -29,6 +31,16 @@ gulp.task('build-min', function() {
   var min = ['-o', 'build/config.js',
              'out=dist/validator.min.js', 'optimize=uglify'];
   return child.spawn('./node_modules/.bin/r.js', min, { stdio: 'inherit' });
+});
+
+gulp.task('build-sass', function() {
+  return gulp.src('lib/*.scss')
+             .pipe(sass())
+             .on('error', function(e) {
+                console.log('sass error:', e.message);
+              })
+             .pipe(autoprefixer())
+             .pipe(gulp.dest('dist'))
 });
 
 gulp.task('build-max', function() {

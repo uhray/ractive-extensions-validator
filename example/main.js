@@ -13,7 +13,7 @@ require.config({
   }
 });
 
-requirejs(['ractive', 'rv!example/template', 'dist/validator'],
+requirejs(['ractive', 'rv!example/template', 'lib/main'],
 function(Ractive, template) {
   var ractive = new Ractive({
         el: '#container',
@@ -21,4 +21,8 @@ function(Ractive, template) {
         data: {
         }
       });
+
+  ractive.validatorDefaultOptions({
+    orientation: 'inline'
+  });
 });

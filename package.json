@@ -12,9 +12,12 @@
   "dependencies": {},
   "devDependencies": {
     "gulp": "^3.8.8",
-    "jscs": "1.7.3",
+    "gulp-autoprefixer": "^1.0.1",
+    "gulp-ruby-sass": "^0.7.1",
     "http-server": "^0.7.4",
-    "requirejs": "^2.1.15"
+    "jscs": "1.7.3",
+    "requirejs": "^2.1.15",
+    "sass": "^0.5.0"
   },
   "author": "",
   "license": "MIT"

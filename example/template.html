@@ -17,39 +17,69 @@
       on-validatorSuccess="success">
 
   <h2>Required Field</h2>
-  <input type="text"
-         validator="required" />
+  <div class="input-group">
+    <input type="text" validator="required" />
+  </div>
 
   <h2>Email Field</h2>
-  <input type="text"
-         validator="email" />
+  <div class="input-group">
+    <input type="text"
+           validator="email" />
+  </div>
 
   <h2>Max Length</h2>
-  <input type="text" validator="string,0,3" />
+  <div class="input-group">
+    <input type="text" validator="string,0,3" />
+  </div>
 
   <h2>Custom Message</h2>
-  <input type="text"
-         validator-message="Field is required, dummy"
-         validator="required" />
+  <div class="input-group">
+    <input type="text"
+           validator-message="Field is required, dummy"
+           validator="required" />
+  </div>
+
+  <h2>Inline</h2>
+  <div class="input-group">
+    <input type="text"
+           validator-orientation="inline"
+           validator="required" />
+  </div>
 
   <h2>Top</h2>
-  <input type="text"
-         validator-orientation="top"
-         validator="required" />
+  <div class="input-group">
+    <input type="text"
+           validator-orientation="top"
+           validator="required" />
+  </div>
 
   <h2>Bottom</h2>
-  <input type="text"
-         validator-orientation="bottom"
-         validator="required" />
+  <div class="input-group">
+    <input type="text"
+           validator-orientation="bottom"
+           validator="required" />
+  </div>
+
+  <h2>Left</h2>
+  <div class="input-group">
+    <input type="text"
+           validator-orientation="left"
+           validator="required" />
+  </div>
+
   <h2>Right</h2>
-  <input type="text"
-         validator-orientation="right"
-         validator="required" />
+  <div class="input-group">
+    <input type="text"
+           validator-orientation="right"
+           validator="required" />
+  </div>
 
   <h2>Special Class</h2>
-  <input type="text"
-         validator-class="myclassname"
-         validator="required" />
+  <div class="input-group">
+    <input type="text"
+           validator-class="myclassname"
+           validator="required" />
+  </div>
 
   <h2>Checkbox</h2>
   <label style="display:block">
@@ -59,5 +89,5 @@
     This is a checkbox
   </label>
 
-  <input type="submit" />
+  <input type="submit" value="submit" />
 </form>
