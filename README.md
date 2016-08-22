@@ -279,6 +279,10 @@ Example:
        validator-class="myclassname" />
 ```
 
+<a href="#options-styleMode" name="#options-styleMode">#</a> validator-**styleMode** = "*styleMode*"
+
+Default is unsused. Right now the only option is `"semantic"` which will add the class `"error"` to the parent item of class `"field"` so the semantic UI style is in error mode.
+
 <a href="#options-orientation" name="#options-orientation">#</a> validator-**orientation** = "*orientation*"
 
 By default, the error message is with *orientation* as 'inline'. The orientation describes what side of the input or textarea the error message is displayed. Options are top, bottom, left, right, and inline.

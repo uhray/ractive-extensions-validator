@@ -626,11 +626,15 @@ function(template) {
   defaultOptions = {
     _orientation: {
       _default: 'inline',
-      options: ['top', 'bottom', 'left', 'right', 'inline']
+      options: ['top', 'bottom', 'left', 'right', 'inline', 'semantic']
     },
     _insertMode: {
       _default: 'insert',
       options: ['insert', 'append']
+    },
+    _styleMode: {
+      _default: '',
+      options: ['semantic']
     },
     _class: ''
   };
@@ -667,12 +671,19 @@ function(template) {
         if (v) {
           element.classList.remove('validator-invalid');
           p && p.classList && p.classList.remove('validator-child-invalid');
+
+          if (this.get('styleMode') == 'semantic') {
+            $(element).parents('.field').removeClass('error');
+          }
         } else {
           element.classList.add('validator-invalid');
           p && p.classList && p.classList.add('validator-child-invalid');
           p && p.classList && p.classList.add(
             'validator-parent-orient-' + this.get('orientation')
           );
+          if (this.get('styleMode') == 'semantic') {
+            $(element).parents('.field').addClass('error');
+          }
         }
       });
 
@@ -932,6 +943,7 @@ function(template) {
           message: msg,
           parent: this,
           orientation: opts.orientation,
+          styleMode: opts.styleMode,
           options: opts
         }
       });
