@@ -1,7 +1,8 @@
 {
   "name": "ractive-extensions-validator",
   "authors": [
-    "Robert Thompson <bobby@uhray.com>"
+    "Robert Thompson <bobby@uhray.com>",
+    "Nick Schappler <nick@uhray.com>"
   ],
   "main": "dist/validator.js",
   "license": "MIT",
