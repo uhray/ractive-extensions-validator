@@ -860,7 +860,7 @@ function(template) {
       pattern: function(val, p) {
         var str = String(val),
             re = new RegExp(p);
-        return { value: val, valid: re.test(str), message: 'Not a valid url.' };
+        return { value: val, valid: re.test(str), message: 'Not a valid input.' };
       },
 
       samevalue: function(val, s) {
