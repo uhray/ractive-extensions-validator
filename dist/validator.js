@@ -763,7 +763,7 @@ function(template) {
 
       email: function(val) {
         var str = String(val),
-            re = /^([\w\-\.]+)@((\[([0-9]{1,3}\.){3}[0-9]{1,3}\])|(([\w\-]+\.)+)([a-zA-Z]{2,4}))$/;
+            re = /^([\w\-\.\+]+)@((\[([0-9]{1,3}\.){3}[0-9]{1,3}\])|(([\w\-]+\.)+)([a-zA-Z]{2,4}))$/;
         return { value: val, valid: re.test(str),
                  message: 'Not a valid email.' };
       },
