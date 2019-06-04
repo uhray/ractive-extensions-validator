@@ -23,5 +23,8 @@
     "require-css": "~0.1.8",
     "almond": "~0.3.0",
     "rv": "~0.1.8"
+  },
+  "resolutions": {
+    "ractive": "~0.8.0"
   }
 }
